@@ -16,4 +16,4 @@ uvicorn backend.api.main:app --reload --host 0.0.0.0 --port 8000
 npm install
 npm run dev
 ```
-Set `.env` from `.env.example` (e.g. `VITE_API_BASE=http://localhost:8000`). Open hhttp://localhost:3006 to upload an X-ray and run the pipeline.
+Set `.env` from `.env.example` (e.g. `VITE_API_BASE=http://localhost:8000`). Open http://localhost:3006 to upload an X-ray and run the pipeline.
