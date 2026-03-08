@@ -1,0 +1,55 @@
+# SpeedRay API — Vultr deployment config
+# Use this as a deployment checklist when running the FastAPI backend on a Vultr VPS or container.
+# Vultr Serverless Inference is LLM-focused; for full API + PyTorch model use a VPS or container.
+
+name: speedray-api
+runtime: python
+python_version: "3.10"
+
+# ASGI app entry (for uvicorn/gunicorn). Must run from repo root so backend.* imports work.
+handler: backend.api.main:app
+
+# Start command (run from repo root; do NOT cd into backend/)
+#   cd /opt/speedray && source venv/bin/activate && python run_api.py
+# Or: uvicorn backend.api.main:app --host 0.0.0.0 --port 8000
+start_command: python run_api.py
+
+# Install steps (from repo root)
+#  python -m venv venv && source venv/bin/activate  # or venv\Scripts\activate on Windows
+#  pip install -r backend/requirements.txt
+#  cd backend  # then run start_command
+
+# Required environment variables (set in .env or Vultr dashboard)
+env:
+  - SPEEDRAY_API_HOST=0.0.0.0
+  - SPEEDRAY_API_PORT=8000
+  # Cloudinary
+  - SPEEDRAY_CLOUDINARY_CLOUD_NAME
+  - SPEEDRAY_CLOUDINARY_API_KEY
+  - SPEEDRAY_CLOUDINARY_API_SECRET
+  # Gemini
+  - SPEEDRAY_GEMINI_API_KEY
+  # ElevenLabs
+  - SPEEDRAY_ELEVENLABS_API_KEY
+  - SPEEDRAY_ELEVENLABS_VOICE_ID
+  # Torch X-ray model (optional: use TorchXRayVision by default)
+  - SPEEDRAY_TORCH_DEVICE=cpu
+  - SPEEDRAY_TORCH_MODEL_TYPE=torchxrayvision
+  # SPEEDRAY_TORCH_MODEL_PATH  # only if MODEL_TYPE=custom
+  # Backboard.io
+  - SPEEDRAY_BACKBOARD_BASE_URL
+  - SPEEDRAY_BACKBOARD_API_KEY
+  # RAG (optional)
+  - SPEEDRAY_RAG_CONNECTION_STRING
+  - SPEEDRAY_RAG_DATABASE
+  # Solana (optional)
+  - SPEEDRAY_SOLANA_RPC_URL
+  - SPEEDRAY_SOLANA_PRIVATE_KEY
+  - SPEEDRAY_SOLANA_LOG_PROGRAM_ID
+  # Presage (optional)
+  - SPEEDRAY_PRESAGE_BASE_URL
+  - SPEEDRAY_PRESAGE_API_KEY
+  # Auth0 (optional)
+  - SPEEDRAY_AUTH0_DOMAIN
+  - SPEEDRAY_AUTH0_AUDIENCE
+  - SPEEDRAY_AUTH0_ISSUER

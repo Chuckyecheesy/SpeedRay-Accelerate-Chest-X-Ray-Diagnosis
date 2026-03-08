@@ -1,0 +1,26 @@
+/* Styles for AudioExplanation (SpeedRay) */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playButton {
+  padding: 8px 14px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.playButton:hover {
+  background: #1d4ed8;
+}
+
+.placeholder {
+  color: #888;
+  font-size: 14px;
+}

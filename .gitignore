@@ -1,0 +1,13 @@
+# SpeedRay — Ignore node_modules, .env, build, __pycache__, venv, etc.
+.env
+.env.local
+.speedray_last_activity
+debug-853f04.log
+node_modules/
+__pycache__/
+*.pyc
+venv/
+.pytest_cache/
+dist/
+build/
+*.egg-info/

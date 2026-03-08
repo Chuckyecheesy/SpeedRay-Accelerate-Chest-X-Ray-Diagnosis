@@ -1,0 +1,44 @@
+/* Styles for XRayViewer (SpeedRay) */
+
+.container {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  border-radius: 8px;
+}
+
+.viewport {
+  transform-origin: center center;
+  display: inline-block;
+  min-width: 100%;
+  min-height: 200px;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.controls {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.controls button {
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.controls button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}

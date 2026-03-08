@@ -1,0 +1,64 @@
+/* Demo page (SpeedRay) */
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+}
+
+.uploadRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.uploadRow input[type="file"] {
+  font-size: 14px;
+}
+
+.uploadRow button {
+  padding: 8px 16px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.uploadRow button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.viewerSection {
+  min-height: 300px;
+}
+
+.reportSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.topFinding {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,18 @@
+# SpeedRay backend — Python deps
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.0
+pydantic-settings>=2.0
+python-multipart>=0.0.6
+cloudinary>=1.36.0
+google-generativeai>=0.3.0
+openai>=1.0.0
+elevenlabs>=0.2.0
+requests>=2.31.0
+PyJWT>=2.8.0
+torch>=2.0.0
+torchvision>=0.15.0
+torchxrayvision>=1.0.0
+Pillow>=10.0.0
+scikit-image>=0.21.0
+# Optional: solana for Solana client

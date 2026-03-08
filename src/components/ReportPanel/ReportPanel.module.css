@@ -1,0 +1,37 @@
+/* Styles for ReportPanel (SpeedRay) */
+
+.panel {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 1rem;
+}
+
+.section h3 {
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.section p,
+.section ul {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.section ul {
+  padding-left: 1.25rem;
+}
+
+.loading,
+.empty {
+  color: #888;
+  font-style: italic;
+}
