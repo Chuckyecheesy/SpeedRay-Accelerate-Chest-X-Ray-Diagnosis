@@ -11,7 +11,7 @@ import {
   submitLogStep,
 } from './steps';
 
-const STEP_ORDER = [
+export const STEP_ORDER = [
   'uploadAndAnnotate',
   'runAnomalyDetection',
   'fetchRAGContext',

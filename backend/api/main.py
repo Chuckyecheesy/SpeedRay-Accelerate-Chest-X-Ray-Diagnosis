@@ -22,14 +22,45 @@ def _preload_xray_model():
         pass
 
 
+import asyncio
+import os
+
+async def _idle_shutdown_loop():
+    """Monitor .speedray_last_activity and shut down system after 10m of inactivity."""
+    while True:
+        await asyncio.sleep(60)
+        try:
+            if _SPEEDRAY_ACTIVITY_FILE.exists():
+                last_active = int(_SPEEDRAY_ACTIVITY_FILE.read_text().strip())
+                if time.time() - last_active > 600:
+                    # Idle for over 10 minutes -> shutdown to save Vultr credits
+                    print(f"[{time.time()}] SpeedRay idle for 10m. Shutting down system.")
+                    os.system("sudo shutdown -h now")
+        except Exception as e:
+            print(f"Idle shutdown check error: {e}")
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Preload AI model at startup so pipeline results return in seconds instead of 1–2 min."""
     import threading
+    
+    # Initialize activity file to current time on startup to prevent instant shutdown
+    try:
+        if not _SPEEDRAY_ACTIVITY_FILE.parent.exists():
+            _SPEEDRAY_ACTIVITY_FILE.parent.mkdir(parents=True, exist_ok=True)
+        _SPEEDRAY_ACTIVITY_FILE.write_text(str(int(time.time())))
+    except Exception:
+        pass
+        
     t = threading.Thread(target=_preload_xray_model, daemon=True)
     t.start()
+    
+    # Start idle shutdown monitor
+    task = asyncio.create_task(_idle_shutdown_loop())
+    
     yield
     # shutdown: nothing to tear down; model stays in process until exit
+    task.cancel()
 
 
 app = FastAPI(title="SpeedRay API", version="0.1.0", lifespan=lifespan)

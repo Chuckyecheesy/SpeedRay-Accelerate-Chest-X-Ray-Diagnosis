@@ -3,7 +3,7 @@
  * user can repeat, then yes/no; "no" shows recommendations and closes.
  */
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { textToSpeech } from '../../ai_agents/ElevenLabs';
 import { API_BASE } from '../../config';
@@ -36,12 +36,12 @@ function getRisk(score: number): 'Low' | 'Moderate' | 'High' {
 export function ConversationPanel({
   isOpen,
   onClose,
-  summary,
-  impression,
+  summary: _summary,
+  impression: _impression,
   topFindingName,
   studyId,
   topFindingScore = 0,
-  region = 'the chest',
+  region: _region = 'the chest',
   className,
 }: ConversationPanelProps) {
   const [phase, setPhase] = useState<Phase>('explaining');

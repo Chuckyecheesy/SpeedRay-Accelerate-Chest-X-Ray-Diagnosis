@@ -4,7 +4,7 @@ import { uploadImage } from '../../storage';
 import type { PipelineRunState } from '../types';
 
 export async function uploadAndAnnotate(
-  state: PipelineRunState,
+  _state: PipelineRunState,
   file: File
 ): Promise<Partial<PipelineRunState>> {
   const result = await uploadImage(file);

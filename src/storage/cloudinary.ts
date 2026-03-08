@@ -5,7 +5,7 @@ import type { CloudinaryUploadResult } from './types';
 
 export async function uploadImage(
   file: File,
-  folder: string = 'speedray'
+  _folder: string = 'speedray'
 ): Promise<CloudinaryUploadResult> {
   const form = new FormData();
   form.append('file', file);

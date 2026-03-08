@@ -35,7 +35,7 @@ function useRealAuth(): UseAuthReturn {
   return {
     isAuthenticated: !!isAuthenticated,
     user: user ? {
-      sub: user.sub,
+      sub: user.sub || '',
       email: user.email,
       name: user.name,
       picture: user.picture,
